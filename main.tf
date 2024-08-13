@@ -5,7 +5,8 @@ locals {
 
   cluster_instance_count   = local.enabled ? var.cluster_size : 0
   is_regional_cluster      = var.cluster_type == "regional"
-  is_serverless            = var.engine_mode == "serverless"
+  #this might only be for aurora serverless v2?
+  is_serverless            = var.instance_type == "db.serverless"
   ignore_admin_credentials = var.replication_source_identifier != "" || var.snapshot_identifier != null
 }
 
